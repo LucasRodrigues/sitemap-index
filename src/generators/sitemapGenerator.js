@@ -27,13 +27,9 @@ export default class SiteMapGenerator {
   }
 
   static _generateSitemap(item) {
-    const contentUrl = this._generatLoc(item) +
-      this._generateChangeFreq(item) + this._generateLastMod(item) +
-      this._generatePriority(item);
+    const contentUrl = this._generatLoc(item) + this._generateLastMod(item);
 
-    const template = `<sitemap>${contentUrl}</sitemap>`;
-
-    return template;
+    return `<sitemap>${contentUrl}</sitemap>`;
   }
 
   static _generateLastMod(item) {

@@ -5,7 +5,8 @@ export default class SitemapValidator {
   static validate(item) {
     const validators = SitemapValidatorFactory.get();
     const result = {
-      status: true
+      status: true,
+      messages: []
     };
 
     validators.forEach(validator => {
@@ -13,8 +14,7 @@ export default class SitemapValidator {
 
       if (!validatorResult.status) {
         result.status = false;
-        result.messages = result.messages || [];
-        result.messages.concat(validatorResult.messages);
+        result.messages.push(validatorResult.messages);
       }
     });
 
