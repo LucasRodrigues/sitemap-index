@@ -1,4 +1,5 @@
 src
+.idea
 .eslintrc
 .gitignore
 gulpFile.js
