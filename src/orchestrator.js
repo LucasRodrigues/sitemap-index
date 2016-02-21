@@ -4,14 +4,21 @@ import Generator from './generators/generator';
 export default class Orchestrator {
 
   static do(items) {
-    return new Promise((resolve, rejected) => {
-      const itemsValidator = Validator.validate(items);
+    let result = {};
+    const itemsValidator = Validator.validate(items);
 
-      if (itemsValidator.status) {
-        resolve(Generator.generate(items));
-      } else {
-        rejected(itemsValidator.messages);
-      }
-    });
+    if (itemsValidator.status) {
+      result = {
+        status: true,
+        urlSets: Generator.generate(items)
+      };
+    } else {
+      result = {
+        status: false,
+        messages: itemsValidator.messages
+      };
+    }
+
+    return result;
   }
 }
