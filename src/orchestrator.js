@@ -10,7 +10,7 @@ export default class Orchestrator {
     if (itemsValidator.status) {
       result = {
         status: true,
-        urlSets: Generator.generate(items)
+        indexes: Generator.generate(items)
       };
     } else {
       result = {
